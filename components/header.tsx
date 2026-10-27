@@ -1,0 +1,4 @@
+import Link from "next/link";
+import { Plane } from "lucide-react";
+import { getUser } from "@/lib/auth";
+export async function Header(){const user=await getUser();return <header className="container nav"><Link href="/" className="brand" style={{display:"flex",alignItems:"center",gap:9}}><span style={{display:"grid",placeItems:"center",background:"#e6007e",borderRadius:9,width:34,height:34,color:"white"}}><Plane size={20}/></span> WIZZ AIR <span>ROBLOX RP</span></Link><nav className="navlinks"><Link href="/">Home</Link><Link href="/about">O nas</Link><Link href="/announcements">Ogłoszenia</Link><Link href="/career">Career</Link>{user?.isAdmin&&<Link href="/admin">Admin</Link>}</nav><Link className="btn secondary" href={user?"/api/auth/logout":"/api/auth/discord"}>{user?user.username:"Zaloguj się"}</Link></header>}

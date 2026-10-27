@@ -1,0 +1,1 @@
+import {NextResponse} from "next/server";import {session} from "@/lib/auth";export async function GET(){const s=await session();s.destroy();return NextResponse.redirect(process.env.NEXT_PUBLIC_SITE_URL||"http://localhost:3000")}
